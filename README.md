@@ -1,2 +1,3 @@
-# react-SSC
-React Server Side Components (experimental)
+# React Server Side Components (experimental)
+
+Hi there from this repo!

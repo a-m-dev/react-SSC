@@ -1,0 +1,24 @@
+{
+  "name": "react-ssc",
+  "version": "1.0.0",
+  "description": "react server side components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a-m-dev/react-SSC.git"
+  },
+  "keywords": [
+    "react",
+    "server-side-components",
+    "ssc"
+  ],
+  "author": "Ahmad Mirzaei (@amdev)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/a-m-dev/react-SSC/issues"
+  },
+  "homepage": "https://github.com/a-m-dev/react-SSC#readme"
+}
