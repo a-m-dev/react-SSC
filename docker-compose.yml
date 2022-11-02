@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: wall-of-fame
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./scripts/init_db.sh:/docker-entrypoint-initdb.d/init_db.sh
+      - db:/var/lib/postgresql/data
+  
+  wall-of-fame-app:
+    build:
+      context: .
+    depends_on:
+      - postgres
+    ports:
+      - '8000:8000'
+    environment:
+      DB_HOST: postgres
+      PORT: 8000
+    volumes:
+      - ./scripts:/opt/wall-of-fame/scripts
+      - ./server:/opt/wall-of-fame/server
+      - ./src:/opt/wall-of-fame/src
+      - ./credentials.js:/opt/wall-of-fame/credentials.js
+
+volumes:
+  db:
