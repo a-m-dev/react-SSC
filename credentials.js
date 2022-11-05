@@ -3,5 +3,5 @@ module.exports = {
   database: "appdb",
   user: "admin",
   password: "password",
-  port: "5432",
+  port: "5433",
 };

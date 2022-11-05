@@ -7,7 +7,8 @@
     "start": "concurrently \"yarn build:dev\" \"yarn server:dev\"",
     "build:dev": "cross-env NODE_ENV=development nodemon -- scripts/build.js",
     "server:dev": "cross-env NODE_ENV=development nodemon -- --conditions=react-server server",
-    "seed": "node ./scripts/seed.js"
+    "seed": "node ./scripts/seed.js",
+    "seed:employees": "node ./scripts/seed-employees.js"
   },
   "repository": {
     "type": "git",
