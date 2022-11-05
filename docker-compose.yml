@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres:15
+    image: postgres:13
+    container_name: postgres
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: password
-      POSTGRES_DB: wall-of-fame
+      POSTGRES_DB: appdb
     ports:
       - '5432:5432'
     volumes:
@@ -16,6 +17,8 @@ services:
   wall-of-fame-app:
     build:
       context: .
+    image: wall-of-fame-app
+    container_name: wall-of-fame-app
     depends_on:
       - postgres
     ports:
@@ -27,7 +30,7 @@ services:
       - ./scripts:/opt/wall-of-fame/scripts
       - ./server:/opt/wall-of-fame/server
       - ./src:/opt/wall-of-fame/src
-      - ./credentials.js:/opt/wall-of-fame/credentials.js
-
+      - ./credentials.js:/opt/wall-of-fame/credentials.
+      
 volumes:
   db:

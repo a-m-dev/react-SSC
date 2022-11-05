@@ -1,7 +1,7 @@
 module.exports = {
   host: process.env.DB_HOST || "localhost",
-  database: "notesapi",
-  user: "notesadmin",
+  database: "appdb",
+  user: "admin",
   password: "password",
   port: "5432",
 };

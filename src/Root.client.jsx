@@ -7,7 +7,7 @@ export default function Root({ initialCache }) {
 
   return (
     <div>
-      <h1>Hi There from react app CLIENT 12345!</h1>
+      <h1>Hi There from react app CLIENT 12345 111</h1>
       <br />
       <button onClick={() => setVal(val + 1)}>{val}, update me!</button>
       <Content />
@@ -23,7 +23,6 @@ function Content() {
   });
 
   const response = useServerResponse(location);
-  console.log({ response });
   return (
     <LocationContext.Provider value={[location, setLocation]}>
       {response.value}
