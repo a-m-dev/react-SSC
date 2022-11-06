@@ -1,4 +1,9 @@
-import { unstable_getCacheForType, unstable_useCacheRefresh } from "react";
+import {
+  useEffect,
+  useState,
+  unstable_getCacheForType,
+  unstable_useCacheRefresh,
+} from "react";
 import { createFromFetch } from "react-server-dom-webpack/client";
 
 function createResponseCache() {
@@ -12,16 +17,31 @@ export function useRefresh() {
   };
 }
 
-export function useServerResponse(location) {
+export async function getServerResponse(location) {
   const key = JSON.stringify(location);
   const cache = unstable_getCacheForType(createResponseCache);
   let response = cache.get(key);
 
   if (response) return response;
 
-  response = createFromFetch(
+  response = await createFromFetch(
     fetch("/react?location=" + encodeURIComponent(key))
   );
 
+  cache.set(key, response);
+  console.log({ cache });
   return response;
+}
+
+export function _useServerResponse(appState) {
+  const [tree, setTree] = useState(null);
+
+  useEffect(() => {
+    getServerResponse(appState).then((res) => {
+      // console.log({ res });
+      setTree(res);
+    });
+  }, [appState]);
+
+  return { tree };
 }

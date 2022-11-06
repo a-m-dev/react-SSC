@@ -13,13 +13,14 @@ const express = require("express");
 const compress = require("compression");
 const { readFileSync } = require("fs");
 const { unlink, writeFile } = require("fs").promises;
+
 const { renderToPipeableStream } = require("react-server-dom-webpack/server");
 const path = require("path");
 const { Pool } = require("pg");
 const React = require("react");
 
-const ReactApp = require("../src/Root.server").default;
-console.log({ ReactApp });
+const ReactApp = require("../src/components/Root.server.js").default;
+
 const pool = new Pool(require("../credentials"));
 
 const PORT = process.env.PORT || 8000;
@@ -79,7 +80,7 @@ app.get(
   })
 );
 
-app.get("/react", (req, res) => {
+app.get("/react", function (req, res) {
   sendResponse(req, res, null);
 });
 
@@ -178,13 +179,14 @@ async function renderReactTree(res, props) {
   await waitForWebpack();
   const manifest = readFileSync(
     path.resolve(__dirname, "../dist/react-client-manifest.json"),
-    "utf-8"
+    "utf8"
   );
   const moduleMap = JSON.parse(manifest);
   const { pipe } = renderToPipeableStream(
     React.createElement(ReactApp, props),
     moduleMap
   );
+
   pipe(res);
 }
 
@@ -195,8 +197,9 @@ function sendResponse(req, res, redirectToId) {
   }
   res.set("X-Location", JSON.stringify(location));
   renderReactTree(res, {
-    selectedId: location.selectedId,
-    isEditing: location.isEditing,
-    searchText: location.searchText,
+    shouldChange: location.shouldChange,
+    // selectedId: location.selectedId,
+    // isEditing: location.isEditing,
+    // searchText: location.searchText,
   });
 }

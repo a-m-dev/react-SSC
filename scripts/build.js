@@ -11,7 +11,7 @@ rimraf.sync(path.resolve(__dirname, "../build"));
 const config = {
   mode: isProd ? "production" : "development",
   devtool: isProd ? "source-map" : "cheap-module-source-map",
-  entry: [path.resolve(__dirname, "../src/index.client.jsx")],
+  entry: [path.resolve(__dirname, "../src/index.client.js")],
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "main.js",

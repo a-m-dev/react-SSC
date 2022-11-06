@@ -1,4 +1,4 @@
 {
   "type": "commonjs",
-  "main": "./init.js"
+  "main": "./init.server.js"
 }
