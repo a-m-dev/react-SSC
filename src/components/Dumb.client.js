@@ -1,15 +1,13 @@
 import React, { useState, useTransition } from "react";
 import { useAppContext } from "../contexts/AppContext.client";
 
-console.log({ React });
-
 export default function Dumb() {
   const { appState, setAppState } = useAppContext();
   const [isPending, startTransition] = useTransition();
 
   return (
     <div>
-      This is dumb
+      This is dumb!
       <hr />
       <button
         onClick={() => {

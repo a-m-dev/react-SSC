@@ -9,6 +9,7 @@ export default function App({ shouldChange }) {
         <h1>Wall of Fame!</h1>
         <Dumb />
         {shouldChange && "🔥"}
+        <hr />
         <EmployeeList />
       </div>
     </Suspense>
