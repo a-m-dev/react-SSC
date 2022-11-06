@@ -1,19 +1,15 @@
 import React, { Suspense } from "react";
 import Dumb from "./Dumb.client";
-import { OtherDumb } from "./OtherDumb.server";
+import { EmployeeList } from "./Employees/EmployeeList.server";
 
 export default function App({ shouldChange }) {
   return (
     <Suspense fallback={"loading..."}>
       <div>
-        Hi There from react app SERVER!
+        <h1>Wall of Fame!</h1>
         <Dumb />
-        {/* <OtherDumb /> */}
-        <br />
-        <br />
-        <br />
-        {shouldChange && "hi"}
-        {shouldChange && <OtherDumb />}
+        {shouldChange && "🔥"}
+        <EmployeeList />
       </div>
     </Suspense>
   );

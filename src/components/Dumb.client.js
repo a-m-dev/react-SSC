@@ -1,11 +1,11 @@
-import React, { useState } from "react";
-import { useAppContext } from "../contexts/AppContext";
+import React, { useState, useTransition } from "react";
+import { useAppContext } from "../contexts/AppContext.client";
+
+console.log({ React });
 
 export default function Dumb() {
-  // const [count, setCount] = useState(0);
   const { appState, setAppState } = useAppContext();
-
-  // console.log({ appState });
+  const [isPending, startTransition] = useTransition();
 
   return (
     <div>
@@ -13,10 +13,12 @@ export default function Dumb() {
       <hr />
       <button
         onClick={() => {
-          setAppState((prev) => ({
-            ...prev,
-            shouldChange: !prev.shouldChange,
-          }));
+          startTransition(() => {
+            setAppState((prev) => ({
+              ...prev,
+              shouldChange: !prev.shouldChange,
+            }));
+          });
         }}
       >
         showing: {String(appState.shouldChange)}

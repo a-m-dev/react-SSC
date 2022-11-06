@@ -14,8 +14,6 @@ export default function AppContextProvider() {
   const { tree } = _useServerResponse(appState);
   // const { tree: _tree } = _useServerResponse({ appState });
 
-  // console.log(111, { tree });
-
   return (
     <AppContext.Provider value={{ appState, setAppState }}>
       {tree}

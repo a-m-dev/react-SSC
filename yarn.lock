@@ -1966,6 +1966,11 @@ react-fetch@0.0.0-experimental-28a574ea8-20221027:
   resolved "https://registry.yarnpkg.com/react-fetch/-/react-fetch-0.0.0-experimental-28a574ea8-20221027.tgz#73ebc7044baf218e5fa78e9d84cab96b19017eac"
   integrity sha512-D1L4lYJTKtFDU8ZDVpQSklmDP8mLbiNBCKjXE2ZvhFE7EP1jE7Mf5L9w+ksdsQncWXY7/nhWcOr4SxUIkg6bLA==
 
+react-pg@0.0.0-experimental-28a574ea8-20221027:
+  version "0.0.0-experimental-28a574ea8-20221027"
+  resolved "https://registry.yarnpkg.com/react-pg/-/react-pg-0.0.0-experimental-28a574ea8-20221027.tgz#1d07e5afae440221d60127d5144f6319086eae16"
+  integrity sha512-ItA+3RlRZRBaCbMKl6gIO3JPCNI/YtIbsW6Iy/fpIBjDw1zT1JgivXobD1FSkCR5AII6pDSTLxBxElb8puB5QA==
+
 react-server-dom-webpack@0.0.0-experimental-4bd245e9e-20221104:
   version "0.0.0-experimental-4bd245e9e-20221104"
   resolved "https://registry.yarnpkg.com/react-server-dom-webpack/-/react-server-dom-webpack-0.0.0-experimental-4bd245e9e-20221104.tgz#1f5eb826c03c9a64a77220bd3bba5b729453a7da"

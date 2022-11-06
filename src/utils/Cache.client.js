@@ -1,7 +1,7 @@
 import {
   useEffect,
   useState,
-  unstable_getCacheForType,
+  // unstable_getCacheForType,
   unstable_useCacheRefresh,
 } from "react";
 import { createFromFetch } from "react-server-dom-webpack/client";
@@ -19,17 +19,17 @@ export function useRefresh() {
 
 export async function getServerResponse(location) {
   const key = JSON.stringify(location);
-  const cache = unstable_getCacheForType(createResponseCache);
-  let response = cache.get(key);
+  // const cache = unstable_getCacheForType(createResponseCache);
+  // let response = cache.get(key);
 
-  if (response) return response;
+  // if (response) return response;
 
-  response = await createFromFetch(
+  let response = await createFromFetch(
     fetch("/react?location=" + encodeURIComponent(key))
   );
 
-  cache.set(key, response);
-  console.log({ cache });
+  // cache.set(key, response);
+
   return response;
 }
 

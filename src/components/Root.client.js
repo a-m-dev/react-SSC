@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import AppContextProvider from "../contexts/AppContext";
+import AppContextProvider from "../contexts/AppContext.client";
 import { ErrorBoundary } from "react-error-boundary";
 
 export default function Root({ initialCache }) {

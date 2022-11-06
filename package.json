@@ -48,6 +48,7 @@
     "react": "0.0.0-experimental-4bd245e9e-20221104",
     "react-dom": "0.0.0-experimental-4bd245e9e-20221104",
     "react-error-boundary": "^3.1.4",
-    "react-fetch": "0.0.0-experimental-28a574ea8-20221027"
+    "react-fetch": "0.0.0-experimental-28a574ea8-20221027",
+    "react-pg": "0.0.0-experimental-28a574ea8-20221027"
   }
 }
