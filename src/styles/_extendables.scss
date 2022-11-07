@@ -1,0 +1,19 @@
+@import "./variables";
+@import "./mixins";
+
+.focusable {
+  outline: 0;
+  box-shadow: 0 0 0 0 rgba($secondary-color, 0);
+  @include makeTransition(0.2s, ease-in-out, box-shadow);
+
+  &:focus {
+    box-shadow: 0 0 0 3px rgba($secondary-color, 0.2);
+  }
+}
+
+.makeLikeCard {
+  padding: $spacing-md $spacing-xl;
+  border-radius: $primary-border-radius;
+  box-shadow: 0 $spacing-md $spacing-md 0 rgba($black, 0.075);
+  @include makeTransition(0.2s, ease-in-out, box-shadow);
+}

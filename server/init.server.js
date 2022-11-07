@@ -21,7 +21,14 @@ const React = require("react");
 
 const ReactApp = require("../src/components/Root.server.js").default;
 
-const pool = new Pool(require("../credentials"));
+let cred = require("../credentials");
+
+cred = {
+  ...cred,
+  host: "host.docker.internal" || "192.168.1.66",
+};
+
+const pool = new Pool(cred);
 
 const PORT = process.env.PORT || 8000;
 const app = express();
@@ -143,11 +150,54 @@ app.get(
 
 app.get(
   "/notes/:id",
-  handleErrors(async function (_req, res) {
-    const { rows } = await pool.query("select * from notes where id = $1", [
-      req.params.id,
-    ]);
-    res.json(rows[0]);
+  handleErrors(async function (req, res) {
+    try {
+      const { rows } = await pool.query("select * from notes where id = $1", [
+        req.params.id,
+      ]);
+      res.json(rows[0]);
+    } catch (error) {
+      console.log({ error });
+      res.json({
+        error: true,
+      });
+    }
+  })
+);
+
+app.get(
+  "/employee/:id",
+  handleErrors(async function (req, res) {
+    try {
+      const { rows } = await pool.query(
+        "select * from employees where id = $1",
+        [req.params.id]
+      );
+      res.json(rows[0]);
+    } catch (error) {
+      console.log("server: ", { error });
+      res.status(400).json({
+        error: true,
+      });
+    }
+  })
+);
+
+app.get(
+  "/managerByEmail/:email",
+  handleErrors(async function (req, res) {
+    try {
+      const { rows } = await pool.query(
+        "select * from employees where email = $1",
+        [req.params.email]
+      );
+      res.json(rows[0]);
+    } catch (error) {
+      console.log("server: ", { error });
+      res.status(400).json({
+        error: true,
+      });
+    }
   })
 );
 
@@ -198,6 +248,7 @@ function sendResponse(req, res, redirectToId) {
   res.set("X-Location", JSON.stringify(location));
   renderReactTree(res, {
     shouldChange: location.shouldChange,
+    selectedEmployee: location.selectedEmployee,
     // selectedId: location.selectedId,
     // isEditing: location.isEditing,
     // searchText: location.searchText,

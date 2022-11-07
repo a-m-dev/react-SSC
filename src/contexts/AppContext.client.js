@@ -10,6 +10,7 @@ export function useAppContext() {
 export default function AppContextProvider() {
   const [appState, setAppState] = useState({
     shouldChange: false,
+    selectedEmployee: null,
   });
   const { tree } = _useServerResponse(appState);
   // const { tree: _tree } = _useServerResponse({ appState });

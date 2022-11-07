@@ -7,8 +7,6 @@ export default function Dumb() {
 
   return (
     <div>
-      This is dumb!
-      <hr />
       <button
         onClick={() => {
           startTransition(() => {

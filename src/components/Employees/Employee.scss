@@ -1,0 +1,49 @@
+@import "../../styles/variables";
+@import "../../styles/extendables";
+@import "../../styles/mixins";
+
+.employees-list {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem 1rem;
+  flex-wrap: wrap;
+  margin-bottom: $spacing-xxl * 2;
+
+  &__heading {
+    font-weight: bold;
+    text-align: center;
+    color: $gray-500;
+    font-size: $heading-font-size;
+    margin-bottom: $spacing-xl;
+  }
+}
+
+.employee-card {
+  @extend .makeLikeCard;
+  padding: $spacing-lg;
+  cursor: pointer;
+  border: 1px solid $gray-200;
+
+  &__image {
+    width: 100%;
+    height: 175px;
+    overflow: hidden;
+    margin-bottom: $spacing-md;
+    border-radius: $spacing-sm;
+    @include makeFlex(center, center, column);
+
+    & img {
+      width: 100%;
+    }
+
+    & .no-image {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: $gray-200;
+      background-color: lighten($gray-200, 10%);
+      @include makeFlex(center, center, column);
+    }
+  }
+}

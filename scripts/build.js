@@ -3,6 +3,7 @@ const rimraf = require("rimraf");
 const webpack = require("webpack");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ReactServerWebpackPlugin = require("react-server-dom-webpack/plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isProd = (process.env.NODE_ENV = "production");
 
@@ -24,12 +25,20 @@ const config = {
         use: "babel-loader",
         exclude: "/node_modules/",
       },
+      {
+        test: /\.(sa|sc|c)ss$/,
+        use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+      },
     ],
   },
   plugins: [
     new HTMLWebpackPlugin({
       inject: true,
       template: path.resolve(__dirname, "../src/index.html"),
+    }),
+    new MiniCssExtractPlugin({
+      filename: "app.css",
+      chunkFilename: "[id].css",
     }),
     new ReactServerWebpackPlugin({ isServer: false }),
   ],

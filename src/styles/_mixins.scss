@@ -1,0 +1,39 @@
+// Make Flex
+@mixin makeFlex($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// make unselectable
+@mixin makeUnselectable() {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+/Edge */
+  user-select: none; /* Standard */
+}
+
+// make Transition
+@mixin makeTransition($time: 0.3s, $type: ease-in-out, $variant: all) {
+  transition: $variant $time $type;
+}
+
+// media Queries
+@mixin MIN_QUERY($min) {
+  @media screen and (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin MAX_QUERY($max) {
+  @media screen and (max-width: $max) {
+    @content;
+  }
+}
+
+@mixin MIN_MAX_QUERY($min, $max) {
+  @media screen and (min-width: $min) and (max-width: $max) {
+    @content;
+  }
+}
