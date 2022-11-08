@@ -4,7 +4,6 @@ import { EmployeeDetail as ClientEmployeeDetail } from "./EmployeeDetail.client"
 import { MiniManagerDetail } from "./MiniManagerDetail.server";
 
 export const EmployeeDetail = ({ selectedEmployee }) => {
-  console.log(1, { selectedEmployee });
   if (!selectedEmployee) return null;
 
   const employeeData = fetch(

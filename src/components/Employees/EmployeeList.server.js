@@ -8,8 +8,6 @@ import { EmployeeCard } from "./EmployeeCard.client";
 export function EmployeeList() {
   const employees = db.query(getAllEmployees).rows;
 
-  // console.log(employees[0]);
-
   return employees.length > 0 ? (
     <div className="container employees-list">
       {employees.map(({ created_at, updated_at, ...rest }) => (

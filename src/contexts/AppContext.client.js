@@ -9,8 +9,9 @@ export function useAppContext() {
 
 export default function AppContextProvider() {
   const [appState, setAppState] = useState({
-    shouldChange: false,
+    // shouldChange: false,
     selectedEmployee: null,
+    shouldShowCreateEmployeeDialog: false,
   });
   const { tree } = _useServerResponse(appState);
   // const { tree: _tree } = _useServerResponse({ appState });

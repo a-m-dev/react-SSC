@@ -24,7 +24,7 @@ export function EmployeeCard({ employee }) {
           <div className="no-image">:(</div>
         )}
       </div>
-      <h5>{employee.name || "Not name!"}</h5>
+      <h5>{employee.name || "No Name!"}</h5>
     </div>
   );
 }

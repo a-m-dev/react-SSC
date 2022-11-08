@@ -1,0 +1,9 @@
+@import "../../styles/variables";
+@import "../../styles/extendables";
+@import "../../styles/mixins";
+
+.actions {
+  width: 100%;
+  padding: $spacing-xl 0;
+  @include makeFlex(space-between, center, row);
+}

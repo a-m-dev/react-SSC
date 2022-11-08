@@ -10,8 +10,6 @@ export const EmployeeDetail = ({
 }) => {
   const { setAppState } = useAppContext();
 
-  console.log({ employeeData, managerData });
-
   const handleCloseDialog = () => {
     setAppState((prev) => ({
       ...prev,
@@ -25,11 +23,21 @@ export const EmployeeDetail = ({
         <div className="content">
           <div className="cover">
             <div className="bg">
-              <img src={employeeData.image_wall_of_leet_url} />
+              {employeeData.image_wall_of_leet_url ? (
+                <img src={employeeData.image_wall_of_leet_url} />
+              ) : (
+                <div className="bg--empty">
+                  <span>:(</span>
+                </div>
+              )}
             </div>
 
             <div className="avatar">
-              <img src={employeeData.image_portrait_url} />
+              {employeeData.image_portrait_url ? (
+                <img src={employeeData.image_portrait_url} />
+              ) : (
+                <div className="avatar--empty">:(</div>
+              )}
             </div>
           </div>
 
